@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">CineFlix</string>
+    <string name="popular_movies">Popular Movies</string>
+    <string name="favorite_movies">Favorite Movies</string>
+    <string name="back_button">Back Button</string>
+    <string name="share_button">Share Button</string>
+    <string name="movie_title_placeholder">Movie Title</string>
+    <string name="genre_placeholder">Genre</string>
+    <string name="release_date_placeholder">Release Date</string>
+    <string name="runtime_title">Runtime</string>
+    <string name="unknown_runtime">Unknown runtime</string>
+    <string name="description_title">Description</string>
+    <string name="no_description">No description found.</string>
+    <string name="cast_title">Cast</string>
+    <string name="no_cast">No cast members found.</string>
+    <string name="reviews_title">Reviews</string>
+    <string name="similar_movies_title">Similar Movies</string>
+    <string name="movie_poster">Movie Poster</string>
+    <string name="favorite_icon">Favorite Icon</string>
+    <string name="similar_movies_list">Similar Movies List</string>
+</resources>
