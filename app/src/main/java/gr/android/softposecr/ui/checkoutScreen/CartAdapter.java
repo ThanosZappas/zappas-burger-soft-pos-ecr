@@ -66,6 +66,7 @@ public class CartAdapter extends ListAdapter<Item, CartAdapter.CartViewHolder> {
             binding.cartItemTitle.setText(item.getTitle());
             binding.cartItemPrice.setText(String.format(Locale.getDefault(), "%.2f€", item.getPrice()));
             binding.itemCounter.setText(String.valueOf(quantity));
+            binding.itemPoster.setImageResource(item.getPosterPath());
         }
     }
 

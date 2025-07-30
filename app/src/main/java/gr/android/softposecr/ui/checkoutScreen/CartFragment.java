@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import java.util.Locale;
 import dagger.hilt.android.AndroidEntryPoint;
 import gr.android.softposecr.databinding.FragmentCartBinding;
+import gr.android.softposecr.domain.models.Item;
 import gr.android.softposecr.ui.homeScreen.ItemViewModel;
 
 @AndroidEntryPoint
@@ -33,31 +34,45 @@ public class CartFragment extends Fragment implements CartAdapter.CartItemAction
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(ItemViewModel.class);
         setupRecyclerView();
+        viewModel.updateCartItemsAndTotal(); // Force an initial update
         setupObservers();
-        setupCheckoutButton();
+        setupUI();
     }
 
     private void setupRecyclerView() {
         binding.cartRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         adapter = new CartAdapter(this, viewModel.getItemQuantities());
         binding.cartRecyclerView.setAdapter(adapter);
+        System.out.println("Cart quantities at setup: " + viewModel.getItemQuantities());
     }
 
     private void setupObservers() {
         // Observe cart items
         viewModel.getCartItems().observe(getViewLifecycleOwner(), items -> {
+            System.out.println("Cart items updated: " + items.size() + " items");
+            if (items.isEmpty()) {
+                System.out.println("Cart is empty!");
+            } else {
+                for (Item item : items) {
+                    System.out.println("Cart item: " + item.getTitle() + " - Quantity: " + viewModel.getItemQuantity(item));
+                }
+            }
             adapter.submitList(items);
         });
 
         // Observe total amount
         viewModel.getCartTotal().observe(getViewLifecycleOwner(), total -> {
+            System.out.println("Cart total updated: " + total);
             binding.totalAmount.setText(String.format(Locale.getDefault(), "%.2f€", total));
         });
     }
 
-    private void setupCheckoutButton() {
+    private void setupUI() {
         binding.checkoutButton.setOnClickListener(v -> {
             // Navigation to checkout will be handled by you
+        });
+        binding.backArrowButton.setOnClickListener(v-> {
+            Navigation.findNavController(v).navigateUp();
         });
     }
 

@@ -78,8 +78,8 @@
 
             <TextView
                 android:id="@+id/minusButton"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="0dp"
                 android:background="@drawable/minus_button"
@@ -92,8 +92,8 @@
 
             <TextView
                 android:id="@+id/itemCounter"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_marginEnd="40dp"
                 android:layout_marginTop="20dp"
                 android:text="0"
@@ -108,8 +108,8 @@
 
             <TextView
                 android:id="@+id/plusButton"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/plus_button"
                 android:backgroundTint="@color/lettuce_green"

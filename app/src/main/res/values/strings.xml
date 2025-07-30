@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">SoftPosEcr</string>
-    <string name="app_title">Telis Burger</string>
+    <string name="app_title">Zappas Burger</string>
     <string name="popular_items">Popular Items</string>
     <string name="favorite_items">Favorite Items</string>
     <string name="back_button">Back Button</string>

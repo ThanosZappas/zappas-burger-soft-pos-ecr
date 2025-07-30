@@ -12,7 +12,7 @@
         android:layout_height="0dp"
         android:layout_margin="9dp"
         android:scaleType="centerCrop"
-        tools:src="@drawable/topgunmaverickposter"
+        tools:src="@drawable/loading"
         android:src="@drawable/loading"
         android:background="@drawable/rounded_corners"
         android:clipToOutline="true"

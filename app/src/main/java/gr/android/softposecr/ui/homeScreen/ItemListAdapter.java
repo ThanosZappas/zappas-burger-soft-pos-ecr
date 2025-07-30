@@ -14,10 +14,12 @@ import gr.android.softposecr.domain.models.Item;
 public class ItemListAdapter extends ListAdapter<Item, ItemListAdapter.ItemViewHolder> {
 
     private final OnItemActionListener listener;
+    private final ItemViewModel viewModel;
 
-    public ItemListAdapter(OnItemActionListener listener) {
+    public ItemListAdapter(OnItemActionListener listener, ItemViewModel viewModel) {
         super(new DiffCallback());
         this.listener = listener;
+        this.viewModel = viewModel;
     }
 
     @NonNull
@@ -32,16 +34,21 @@ public class ItemListAdapter extends ListAdapter<Item, ItemListAdapter.ItemViewH
         Item item = getItem(position);
         holder.bind(item);
         holder.itemView.setOnClickListener(v -> listener.onItemClick(item.getTitle()));
+
+        // Initialize counter with current quantity
+        int currentQuantity = viewModel.getItemQuantity(item);
+        holder.binding.itemCounter.setText(String.valueOf(currentQuantity));
+
         holder.binding.plusButton.setOnClickListener(v -> {
             listener.onPlusClick(item.getTitle());
-            int currentCount = Integer.parseInt(holder.binding.itemCounter.getText().toString());
-            holder.binding.itemCounter.setText(String.valueOf(currentCount + 1));
+            int count = Integer.parseInt(holder.binding.itemCounter.getText().toString());
+            holder.binding.itemCounter.setText(String.valueOf(count + 1));
         });
         holder.binding.minusButton.setOnClickListener(v -> {
             listener.onMinusClick(item.getTitle());
-            int currentCount = Integer.parseInt(holder.binding.itemCounter.getText().toString());
-            if (currentCount > 0) {
-                holder.binding.itemCounter.setText(String.valueOf(currentCount - 1));
+            int count = Integer.parseInt(holder.binding.itemCounter.getText().toString());
+            if (count > 0) {
+                holder.binding.itemCounter.setText(String.valueOf(count - 1));
             }
         });
     }

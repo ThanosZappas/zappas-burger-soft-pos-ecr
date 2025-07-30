@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base Layer -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/icon_backround"/>
+            <corners android:radius="0dp"/>
+        </shape>
+    </item>
+    <!-- Aura Layer -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#10000000"/> <!-- 10% black aura -->
+            <corners android:radius="0dp"/>
+        </shape>
+    </item>
+</layer-list>

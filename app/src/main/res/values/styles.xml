@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomSearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:textSize">25sp</item>
+        <item name="android:textColor">@color/icon_text</item>
+        <item name="android:textColorHint">@color/icon_text</item>
+        <item name="android:editTextColor">@color/icon_text</item>
+        <item name="queryBackground">@null</item>
+        <item name="searchHintIcon">@null</item>
+        <item name="android:maxWidth">10000dp</item>
+        <item name="closeIcon">@drawable/ic_close_white</item>
+    </style>
+</resources>

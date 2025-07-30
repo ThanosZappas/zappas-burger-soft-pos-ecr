@@ -18,5 +18,22 @@
         android:id="@+id/itemListFragment"
         android:name="gr.android.softposecr.ui.homeScreen.ItemListFragment"
         android:label="ItemListFragment"
-        tools:layout="@layout/fragment_item_list"/>
+        tools:layout="@layout/fragment_item_list">
+        <action
+            android:id="@+id/action_itemListFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_itemListFragment_to_itemDetailsFragment"
+            app:destination="@id/itemDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="gr.android.softposecr.ui.checkoutScreen.CartFragment"
+        android:label="CartFragment"
+        tools:layout="@layout/fragment_cart"/>
+    <fragment
+        android:id="@+id/itemDetailsFragment"
+        android:name="gr.android.softposecr.ui.detailsScreen.ItemDetailsFragment"
+        android:label="ItemDetailsFragment"
+        tools:layout="@layout/fragment_details"/>
 </navigation>

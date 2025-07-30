@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/textured_backround">
+    android:background="@drawable/default_backround">
 
     <TextView
         android:id="@+id/appTitle"
@@ -23,6 +23,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/backArrowButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/baseline_arrow_back_24"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:contentDescription="@string/back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/secondLayout"
         android:layout_width="match_parent"
@@ -32,35 +43,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <TextView
-            android:id="@+id/searchButton"
-            android:layout_width="37dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="13dp"
-            android:background="@drawable/search_button_brown"
-            android:backgroundTint="@color/patty_brown"
-            android:clickable="true"
-            android:contentDescription="search button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/secondLayout"
-            app:layout_constraintBottom_toBottomOf="@id/search"/>
 
-        <TextView
+        <androidx.appcompat.widget.SearchView
             android:id="@+id/search"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:clickable="true"
+            android:focusable="true"
             android:fontFamily="sans-serif-medium"
             android:padding="3dp"
-            android:text="         Search.."
-            android:gravity="bottom"
-            android:textColor="@color/icon_text"
-            android:textSize="25sp"
-            android:textStyle="normal"
+            app:iconifiedByDefault="false"
+            app:queryHint="Search.."
+            app:searchIcon="@drawable/search_button_brown"
+            android:gravity="center_vertical"
+            style="@style/CustomSearchViewStyle"
+            android:theme="@style/CustomSearchViewStyle"
             android:background="@drawable/search_underline"
+            android:backgroundTint="@color/icon_text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/secondLayout"
-            app:layout_constraintStart_toEndOf="@id/searchButton" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -82,9 +84,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/rounded_button_background"
+        android:clickable="true"
+        android:background="@drawable/poppy_button"
         android:padding="12dp"
+        android:visibility="invisible"
+        tools:visibility="visible"
         android:text="🛒 Cart: 0.00€"
+        android:backgroundTint="@color/cheese_yellow"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import java.util.Locale;
 
 import dagger.hilt.android.AndroidEntryPoint;
+import gr.android.softposecr.R;
 import gr.android.softposecr.databinding.FragmentItemListBinding;
 import gr.android.softposecr.domain.models.Item;
 
@@ -37,17 +38,32 @@ public class ItemListFragment extends Fragment implements ItemListAdapter.OnItem
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        viewModel = new ViewModelProvider(this).get(ItemViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(ItemViewModel.class);
         setupRecyclerView();
         updateUI();
     }
 
     private void setupRecyclerView() {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        adapter = new ItemListAdapter(this);
+        adapter = new ItemListAdapter(this, viewModel);
         binding.recyclerView.setAdapter(adapter);
         binding.recyclerView.setItemAnimator(null);
-        viewModel.getItems().observe(getViewLifecycleOwner(), items -> {
+
+        // Set up search functionality
+        binding.search.setOnQueryTextListener(new androidx.appcompat.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                viewModel.filterItems(newText);
+                return true;
+            }
+        });
+
+        viewModel.getFilteredItems().observe(getViewLifecycleOwner(), items -> {
             adapter.submitList(items);
         });
     }
@@ -55,7 +71,20 @@ public class ItemListFragment extends Fragment implements ItemListAdapter.OnItem
     private void updateUI() {
         // Update cart total when quantities change
         viewModel.getCartTotal().observe(getViewLifecycleOwner(), total -> {
-            binding.cartTotalText.setText(String.format(Locale.getDefault(), "Total: %.2f€", total));
+            binding.cartTotalText.setText(String.format(Locale.getDefault(), "\uD83D\uDED2 Cart: %.2f€", total));
+            if( total == 0.0f) {
+                binding.cartTotalText.setVisibility(View.GONE);
+            } else {
+                binding.cartTotalText.setVisibility(View.VISIBLE);
+            }
+        });
+        binding.cartTotalText.setOnClickListener(view -> {
+            // Navigate to CartFragment when cart total is clicked
+            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_itemListFragment_to_cartFragment);
+        });
+        binding.backArrowButton.setOnClickListener(v -> {
+            // Navigate back to the previous screen
+            Navigation.findNavController(binding.getRoot()).navigateUp();
         });
     }
 
