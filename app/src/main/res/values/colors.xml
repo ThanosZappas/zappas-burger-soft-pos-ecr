@@ -7,6 +7,12 @@
     <color name="primary">#872341</color>
     <color name="secondary">#BE3144</color>
     <color name="accent">#E17564</color>
-
-
+    <color name="mellon_blue">#019EE3</color>
+    <color name="bun_orange">#f7993f</color>
+    <color name="cheese_yellow">#F2C94C</color>
+    <color name="lettuce_green">#75bd4f</color>
+    <color name="tomato_red">#d53328</color>
+    <color name="patty_brown">#88573b</color>
+    <color name="icon_backround">#f3e7c1</color>
+    <color name="icon_text">#482d22</color>
 </resources>

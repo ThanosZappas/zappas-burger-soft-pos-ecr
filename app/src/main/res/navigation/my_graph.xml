@@ -1,32 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/my_graph"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/movieListFragment">
-
+    android:id="@+id/my_graph"
+    app:startDestination="@id/openingFragment">
     <fragment
-        android:id="@+id/movieListFragment"
-        android:name="gr.android.cineflix.ui.homeScreen.MovieListFragment"
-        android:label="MovieListFragment"
-        tools:layout="@layout/fragment_movie">
+        android:id="@+id/openingFragment"
+        android:name="gr.android.softposecr.ui.openScreen.OpeningFragment"
+        android:label="OpeningFragment"
+        tools:layout="@layout/fragment_opening">
         <action
-            android:id="@+id/action_movieListFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
-        <argument
-            android:name="movieId"
-            app:argType="integer"
-            android:defaultValue="-1" />
+            android:id="@+id/action_openingFragment_to_itemListFragment"
+            app:destination="@id/itemListFragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/detailsFragment"
-        android:name="gr.android.cineflix.ui.detailsScreen.DetailsFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:label="DetailsFragment" >
-        <action
-            android:id="@+id/action_detailsFragment_self"
-            app:destination="@id/detailsFragment" />
-    </fragment>
+        android:id="@+id/itemListFragment"
+        android:name="gr.android.softposecr.ui.homeScreen.ItemListFragment"
+        android:label="ItemListFragment"
+        tools:layout="@layout/fragment_item_list"/>
 </navigation>

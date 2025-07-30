@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">CineFlix</string>
-    <string name="popular_movies">Popular Movies</string>
-    <string name="favorite_movies">Favorite Movies</string>
+    <string name="app_name">SoftPosEcr</string>
+    <string name="app_title">Telis Burger</string>
+    <string name="popular_items">Popular Items</string>
+    <string name="favorite_items">Favorite Items</string>
     <string name="back_button">Back Button</string>
     <string name="share_button">Share Button</string>
-    <string name="movie_title_placeholder">Movie Title</string>
+    <string name="item_title_placeholder">Item Title</string>
     <string name="genre_placeholder">Genre</string>
     <string name="release_date_placeholder">Release Date</string>
     <string name="runtime_title">Runtime</string>
@@ -14,8 +15,9 @@
     <string name="cast_title">Cast</string>
     <string name="no_cast">No cast members found.</string>
     <string name="reviews_title">Reviews</string>
-    <string name="similar_movies_title">Similar Movies</string>
-    <string name="movie_poster">Movie Poster</string>
+    <string name="similar_items_title">Similar Items</string>
+    <string name="item_poster">Item Poster</string>
     <string name="favorite_icon">Favorite Icon</string>
-    <string name="similar_movies_list">Similar Movies List</string>
+    <string name="similar_items_list">Similar Items List</string>
+    <string name="item_price">Item Price</string>
 </resources>

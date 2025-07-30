@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'gr.android.cineflix'
+    namespace 'gr.android.softposecr'
     compileSdk 34
 
     defaultConfig {
-        applicationId "gr.android.cineflix"
+        applicationId "gr.android.softposecr"
         minSdk 26
         targetSdk 34
         versionCode 1
