@@ -35,5 +35,5 @@
         android:id="@+id/itemDetailsFragment"
         android:name="gr.android.softposecr.ui.detailsScreen.ItemDetailsFragment"
         android:label="ItemDetailsFragment"
-        tools:layout="@layout/fragment_details"/>
+        tools:layout="@layout/fragment_item_details"/>
 </navigation>
