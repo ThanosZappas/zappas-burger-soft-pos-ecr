@@ -20,4 +20,5 @@
     <string name="favorite_icon">Favorite Icon</string>
     <string name="similar_items_list">Similar Items List</string>
     <string name="item_price">Item Price</string>
+    <string name="outcome_view">Outcome View</string>
 </resources>

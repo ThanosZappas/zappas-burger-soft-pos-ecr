@@ -39,83 +39,108 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:layout_marginTop="0dp"
-            android:src="@drawable/ic_zappas_burger_square"
-            app:layout_constraintEnd_toEndOf="parent"
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toBottomOf="@id/appTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appTitle" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="10dp">
 
-        <TextView
-            android:id="@+id/placeOrderButton"
-            android:layout_width="320dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="0dp"
-            android:background="@drawable/rounded_button_background"
-            android:backgroundTint="@color/lettuce_green"
-            android:elevation="4dp"
-            android:paddingHorizontal="25dp"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:paddingVertical="10dp"
-            android:text="Place Order"
-            android:textColor="@color/icon_text"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logo" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/icon_backround"
+                android:id="@+id/scrollLayout">
 
-        <TextView
-            android:id="@+id/otherTransactionsButton"
-            android:layout_width="320dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="13dp"
-            android:background="@drawable/rounded_button_background"
-            android:elevation="4dp"
-            android:paddingHorizontal="25dp"
-            android:paddingVertical="10dp"
-            android:text="Other Transactions"
-            android:textAlignment="center"
-            android:gravity="center|top"
-            android:textColor="@color/icon_text"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/placeOrderButton" />
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_marginTop="0dp"
+                android:src="@drawable/ic_zappas_burger_square"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/scrollLayout"/>
 
-        <TextView
-            android:id="@+id/otherButton"
-            android:layout_width="320dp"
-            android:layout_height="120dp"
-            android:layout_marginTop="13dp"
-            android:background="@drawable/rounded_button_background"
-            android:backgroundTint="@color/tomato_red"
-            android:elevation="4dp"
-            android:paddingHorizontal="25dp"
-            android:paddingVertical="15dp"
-            android:text="Refund"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textColor="@color/icon_text"
-            android:textSize="40sp"
-            android:textStyle="bold"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/otherTransactionsButton" />
+            <TextView
+                android:id="@+id/placeOrderButton"
+                android:layout_width="280dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/rounded_button_background"
+                android:backgroundTint="@color/lettuce_green"
+                android:elevation="4dp"
+                android:paddingHorizontal="25dp"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:paddingVertical="10dp"
+                android:text="Place Order"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/icon_text"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+            <TextView
+                android:id="@+id/otherTransactionsButton"
+                android:layout_width="280dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="13dp"
+                android:background="@drawable/rounded_button_background"
+                android:elevation="4dp"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="10dp"
+                android:text="Other Transactions"
+                android:fontFamily="sans-serif-medium"
+                android:textAlignment="center"
+                android:gravity="center|top"
+                android:textColor="@color/icon_text"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/placeOrderButton" />
+
+            <TextView
+                android:id="@+id/otherButton"
+                android:layout_width="280dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="13dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/rounded_button_background"
+                android:backgroundTint="@color/tomato_red"
+                android:elevation="4dp"
+                android:paddingHorizontal="25dp"
+                android:paddingVertical="15dp"
+                android:text="Refund"
+                android:fontFamily="sans-serif-medium"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:textColor="@color/icon_text"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/otherTransactionsButton" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
