@@ -95,10 +95,7 @@ public class ItemListFragment extends Fragment implements ItemListAdapter.OnItem
     }
 
     @Override
-    public void onItemClick(String itemTitle) {
-        // Handle item click
-        Navigation.findNavController(binding.getRoot()).navigateUp();
-    }
+    public void onItemClick(String itemTitle) {}
 
     @Override
     public void onPlusClick(String itemTitle) {

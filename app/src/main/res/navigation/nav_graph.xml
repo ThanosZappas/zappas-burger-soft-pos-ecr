@@ -35,5 +35,22 @@
         android:id="@+id/itemDetailsFragment"
         android:name="gr.android.softposecr.ui.detailsScreen.ItemDetailsFragment"
         android:label="ItemDetailsFragment"
-        tools:layout="@layout/fragment_item_details"/>
+        tools:layout="@layout/fragment_item_details">
+        <argument
+            android:name="ITEM_TITLE"
+            app:argType="string"
+            android:defaultValue="Item Title"/>
+        <argument
+            android:name="ITEM_DESCRIPTION"
+            app:argType="string"
+            android:defaultValue="Item Description."/>
+        <argument
+            android:name="ITEM_POSTER"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <argument
+            android:name="ITEM_PRICE"
+            app:argType="float"
+            android:defaultValue="0.0" />
+    </fragment>
 </navigation>

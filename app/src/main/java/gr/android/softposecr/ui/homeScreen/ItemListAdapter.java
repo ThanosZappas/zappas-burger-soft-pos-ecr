@@ -1,13 +1,17 @@
 package gr.android.softposecr.ui.homeScreen;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.Locale;
+
+import gr.android.softposecr.R;
 import gr.android.softposecr.databinding.ItemBinding;
 import gr.android.softposecr.domain.models.Item;
 
@@ -33,10 +37,17 @@ public class ItemListAdapter extends ListAdapter<Item, ItemListAdapter.ItemViewH
     public void onBindViewHolder(@NonNull ItemViewHolder holder, int position) {
         Item item = getItem(position);
         holder.bind(item);
-        holder.itemView.setOnClickListener(v -> listener.onItemClick(item.getTitle()));
+        holder.itemView.setOnClickListener(v -> {
+            Bundle args = new Bundle();
+            args.putString("ITEM_TITLE", item.getTitle());
+            args.putString("ITEM_DESCRIPTION", item.getOverview());
+            args.putInt("ITEM_POSTER", item.getPosterPath());
+            args.putFloat("ITEM_PRICE", (float) item.getPrice());
+            Navigation.findNavController(v).navigate(R.id.action_itemListFragment_to_itemDetailsFragment, args);
+        });
 
         // Initialize counter with current quantity
-        int currentQuantity = viewModel.getItemQuantity(item);
+        int currentQuantity = viewModel.getItemQuantity(item.getTitle());
         holder.binding.itemCounter.setText(String.valueOf(currentQuantity));
 
         holder.binding.plusButton.setOnClickListener(v -> {

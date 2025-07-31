@@ -43,351 +43,176 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="0dp">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/posterCard"
+
+            <ImageView
+                android:id="@+id/itemPoster"
+                android:layout_height="200dp"
                 android:layout_width="match_parent"
-                android:layout_height="245dp"
-                laytout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/loading"
+                android:background="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/burger_double" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="0dp">
-
-
-                    <ImageView
-                        android:id="@+id/moviePoster"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/loading"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:src="@drawable/burger_double" />
-
-                    <TextView
-                        android:id="@+id/shareButton"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginEnd="12dp"
-                        android:layout_marginBottom="15dp"
-                        android:background="@drawable/share_icon"
-                        android:clickable="true"
-                        android:visibility="gone"
-                        android:contentDescription="@string/share_button"
-                        android:foregroundTint="@color/white"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        tools:ignore="TouchTargetSizeCheck" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/movieTitle"
-                android:layout_width="300dp"
+                android:id="@+id/itemTitle"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="sans-serif-medium"
                 android:text="@string/item_title_placeholder"
                 android:textColor="@color/icon_text"
-                android:textSize="27sp"
+                android:textSize="35sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/posterCard"
+                app:layout_constraintTop_toBottomOf="@id/itemPoster"
                 tools:text="Double Cheeseburger" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/movieGenre"-->
-<!--                android:layout_width="310dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:fontFamily="sans-serif-medium"-->
-<!--                android:text="@string/genre_placeholder"-->
-<!--                android:textColor="#D7D6D6"-->
-<!--                android:textSize="13sp"-->
-<!--                android:textStyle="normal"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/movieTitle"-->
-<!--                tools:text="Action, Adventure" />-->
-<!--            <ImageView-->
-<!--                android:id="@+id/favoriteIcon"-->
-<!--                android:layout_width="40dp"-->
-<!--                android:layout_height="40dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:layout_marginEnd="27dp"-->
-<!--                android:contentDescription="@string/favorite_icon"-->
-<!--                android:src="@drawable/ic_favorite_unselected"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/posterCard" />-->
-<!---->
-<!--            <TextView-->
-<!--                android:id="@+id/movieReleaseDate"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:layout_marginTop="20dp"-->
-<!--                android:fontFamily="sans-serif-medium"-->
-<!--                android:text="@string/release_date_placeholder"-->
-<!--                android:textColor="@color/accent"-->
-<!--                android:textSize="15sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/movieGenre"-->
-<!--                tools:text="May 27, 2022" />-->
-<!---->
-<!--            <RatingBar-->
-<!--                android:id="@+id/movieRating"-->
-<!--                style="@style/Widget.AppCompat.RatingBar.Small"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:numStars="5"-->
-<!--                android:progressBackgroundTint="#FFFFFF"-->
-<!--                android:progressTint="#FFEB3B"-->
-<!--                android:stepSize="1"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/movieReleaseDate" />-->
+            <TextView
+                android:id="@+id/itemDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="5"
+                android:text="Description"
+                android:textColor="@color/icon_text"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/itemTitle"
+                tools:text="Two beef patties with double cheese and special sauce." />
+
+            <TextView
+                android:id="@+id/minusButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="50dp"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/minus_red_48"
+                android:layout_marginEnd="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/itemCounter"/>
 
 <!--            <TextView-->
-<!--                android:id="@+id/movieRuntimeTitle"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
+<!--                android:id="@+id/minusButton"-->
+<!--                android:layout_width="70dp"-->
+<!--                android:layout_height="70dp"-->
+<!--                android:layout_marginBottom="50dp"-->
 <!--                android:layout_marginStart="15dp"-->
-<!--                android:layout_marginTop="25dp"-->
-<!--                android:fontFamily="sans-serif-medium"-->
-<!--                android:text="@string/runtime_title"-->
-<!--                android:textColor="@color/secondary"-->
-<!--                android:textSize="20sp"-->
-<!--                android:textStyle="bold"-->
+<!--                android:background="@drawable/minus_64"-->
+<!--                android:backgroundTint="@color/tomato_red"-->
+<!--                android:layout_marginEnd="0dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
 <!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/movieRating" />-->
-<!---->
-<!--            <TextView-->
-<!--                android:id="@+id/movieRuntime"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:fontFamily="sans-serif-medium"-->
-<!--                android:text="@string/unknown_runtime"-->
-<!--                android:textColor="@color/accent"-->
-<!--                android:textSize="15sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/movieRuntimeTitle"-->
-<!--                tools:text="2h 10m" />-->
+<!--                app:layout_constraintEnd_toStartOf="@id/itemCounter"/>-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/movieDescriptionTitle"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:layout_marginTop="25dp"-->
-<!--                android:fontFamily="sans-serif-medium"-->
-<!--                android:text="@string/description_title"-->
-<!--                android:textColor="@color/secondary"-->
-<!--                android:textSize="20sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/movieRuntime" />-->
+            <TextView
+                android:id="@+id/itemCounter"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="58dp"
+                android:textAlignment="center"
+                android:textColor="@color/icon_text"
+                android:textSize="45sp"
+                android:textStyle="bold"
+                android:text="1"
+                app:layout_constraintEnd_toStartOf="@id/plusButton"
+                app:layout_constraintStart_toEndOf="@id/minusButton"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/plusButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/plus_green_48"
+                android:layout_marginStart="8dp"
+                app:layout_constraintStart_toEndOf="@id/itemCounter"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
 <!--            <TextView-->
-<!--                android:id="@+id/movieDescription"-->
-<!--                android:layout_width="360dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:layout_marginEnd="15dp"-->
-<!--                android:ellipsize="end"-->
-<!--                android:fontFamily="sans-serif-medium"-->
-<!--                android:maxLines="5"-->
-<!--                android:text="@string/no_description"-->
-<!--                android:textColor="#FFFFFF"-->
-<!--                android:textSize="13sp"-->
-<!--                android:textStyle="normal"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/movieDescriptionTitle"-->
-<!--                tools:text="After more than thirty years of service as one of the Navy's top aviators, Pete 'Maverick' Mitchell is where he belongs, pushing the envelope as a courageous test pilot and dodging the advancement in rank that would ground him." />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/movieCastTitle"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:layout_marginTop="25dp"-->
-<!--                android:fontFamily="sans-serif-medium"-->
-<!--                android:text="@string/cast_title"-->
-<!--                android:textColor="@color/secondary"-->
-<!--                android:textSize="20sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/movieDescription" />-->
-
-<!--            <TextView-->
-<!--                android:id="@+id/movieCast"-->
-<!--                android:layout_width="360dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:layout_marginTop="5dp"-->
-<!--                android:layout_marginEnd="15dp"-->
-<!--                android:ellipsize="end"-->
-<!--                android:fontFamily="sans-serif-medium"-->
-<!--                android:maxLines="3"-->
-<!--                android:text="@string/no_cast"-->
-<!--                android:textColor="#FFFFFF"-->
-<!--                android:textSize="13sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/movieCastTitle"-->
-<!--                tools:text="Tom Cruise, Miles Teller, Jennifer Connelly" />-->
+<!--                android:id="@+id/plusButton"-->
+<!--                android:layout_width="70dp"-->
+<!--                android:layout_height="70dp"-->
+<!--                android:layout_marginBottom="50dp"-->
+<!--                android:background="@drawable/plus_64"-->
+<!--                android:backgroundTint="@color/lettuce_green"-->
+<!--                android:layout_marginStart="8dp"-->
+<!--                app:layout_constraintStart_toEndOf="@id/itemCounter"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"/>-->
 
 
-<!--            <LinearLayout-->
-<!--                android:id="@+id/reviewsLayout"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:layout_marginTop="25dp"-->
-<!--                android:layout_marginEnd="15dp"-->
-<!--                android:orientation="vertical"-->
-<!--                android:visibility="gone"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/movieCast">-->
+            <TextView
+                android:id="@+id/itemPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:contentDescription="@string/item_price"
+                android:text="0.00€"
+                android:textColor="@color/icon_text"
+                android:textSize="35sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/itemDescription"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="11.99€" />
 
-<!--                <TextView-->
-<!--                    android:id="@+id/reviewsTitle"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:fontFamily="sans-serif-medium"-->
-<!--                    android:text="@string/reviews_title"-->
-<!--                    android:textColor="@color/secondary"-->
-<!--                    android:textSize="20sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    tools:text="Reviews" />-->
+            <EditText
+                android:id="@+id/itemNotes"
+                android:layout_width="0dp"
+                android:layout_height="90dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/edit_text_backround"
+                android:fontFamily="sans-serif-medium"
+                android:hint=" Notes.."
+                android:textColorHint="@color/icon_text"
+                android:textColor="@color/icon_text"
+                android:gravity="top|start"
+                android:textSize="18sp"
+                android:textStyle="normal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/itemPrice" />
 
-<!--                <TextView-->
-<!--                    android:id="@+id/firstReviewer"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="15dp"-->
-<!--                    android:fontFamily="sans-serif-medium"-->
-<!--                    android:textColor="@color/accent"-->
-<!--                    android:textSize="15sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@id/movieRuntimeTitle"-->
-<!--                    tools:text="Reviewer" />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/firstReview"-->
-<!--                    android:layout_width="360dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:ellipsize="end"-->
-<!--                    android:fontFamily="sans-serif-medium"-->
-<!--                    android:maxLines="3"-->
-<!--                    android:textColor="#FFFFFF"-->
-<!--                    android:textSize="13sp"-->
-<!--                    android:textStyle="normal"-->
-<!--                    tools:text="This movie was absolutely fantastic! The action sequences were breathtaking and the performances were top-notch." />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/secondReviewer"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="15dp"-->
-<!--                    android:fontFamily="sans-serif-medium"-->
-<!--                    android:textColor="@color/accent"-->
-<!--                    android:textSize="15sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@id/movieRuntimeTitle"-->
-<!--                    tools:text="Reviewer" />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/secondReview"-->
-<!--                    android:layout_width="360dp"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:ellipsize="end"-->
-<!--                    android:fontFamily="sans-serif-medium"-->
-<!--                    android:maxLines="3"-->
-<!--                    android:textColor="#FFFFFF"-->
-<!--                    android:textSize="13sp"-->
-<!--                    android:textStyle="normal"-->
-<!--                    tools:text="This movie was absolutely fantastic! The action sequences were breathtaking and the performances were top-notch." />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/thirdReviewer"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="15dp"-->
-<!--                    android:fontFamily="sans-serif-medium"-->
-<!--                    android:textColor="@color/accent"-->
-<!--                    android:textSize="15sp"-->
-<!--                    android:textStyle="bold"-->
-<!--                    app:layout_constraintStart_toStartOf="parent"-->
-<!--                    app:layout_constraintTop_toBottomOf="@id/movieRuntimeTitle"-->
-<!--                    tools:text="Reviewer" />-->
-
-<!--                <TextView-->
-<!--                    android:id="@+id/thirdReview"-->
-<!--                    android:layout_width="360dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:ellipsize="end"-->
-<!--                    android:fontFamily="sans-serif-medium"-->
-<!--                    android:maxLines="3"-->
-<!--                    android:textColor="#FFFFFF"-->
-<!--                    android:textSize="13sp"-->
-<!--                    android:textStyle="normal"-->
-<!--                    tools:text="This movie was absolutely fantastic! The action sequences were breathtaking and the performances were top-notch." />-->
-
-<!--            </LinearLayout>-->
-
-
-<!--            <TextView-->
-<!--                android:id="@+id/similarMoviesTitle"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:layout_marginTop="25dp"-->
-<!--                android:fontFamily="sans-serif-medium"-->
-<!--                android:text="@string/item_title_placeholder"-->
-<!--                android:textColor="@color/secondary"-->
-<!--                android:textSize="20sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/reviewsLayout" />-->
-
-<!--            <androidx.recyclerview.widget.RecyclerView-->
-<!--                android:id="@+id/similarMoviesRecyclerView"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="0dp"-->
-<!--                android:background="@android:color/transparent"-->
-<!--                android:clipToPadding="false"-->
-<!--                android:orientation="horizontal"-->
-<!--                android:paddingHorizontal="10dp"-->
-<!--                android:paddingTop="8dp"-->
-<!--                android:visibility="gone"-->
-<!--                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@id/similarMoviesTitle"-->
-<!--                tools:listitem="@layout/item_similar_movie" />-->
+            <TextView
+                android:id="@+id/submitNotes"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/edit_text_backround"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:text="Submit"
+                android:textColor="@color/icon_text"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/itemNotes" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+

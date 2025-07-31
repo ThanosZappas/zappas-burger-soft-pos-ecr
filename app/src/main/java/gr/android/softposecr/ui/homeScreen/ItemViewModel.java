@@ -124,7 +124,9 @@ public class ItemViewModel extends ViewModel {
         cartTotalLiveData.setValue(total);
     }
 
-    public int getItemQuantity(Item item) {
-        return itemQuantities.getOrDefault(item.getTitle(), 0);
+    public int getItemQuantity(String itemTitle) {
+        return itemQuantities.getOrDefault(itemTitle, 0);
     }
+
+
 }

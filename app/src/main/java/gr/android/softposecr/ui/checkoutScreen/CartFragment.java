@@ -54,7 +54,7 @@ public class CartFragment extends Fragment implements CartAdapter.CartItemAction
                 System.out.println("Cart is empty!");
             } else {
                 for (Item item : items) {
-                    System.out.println("Cart item: " + item.getTitle() + " - Quantity: " + viewModel.getItemQuantity(item));
+                    System.out.println("Cart item: " + item.getTitle() + " - Quantity: " + viewModel.getItemQuantity(item.getTitle()));
                 }
             }
             adapter.submitList(items);
