@@ -38,12 +38,12 @@ public class ItemListAdapter extends ListAdapter<Item, ItemListAdapter.ItemViewH
         Item item = getItem(position);
         holder.bind(item);
         holder.itemView.setOnClickListener(v -> {
-            Bundle args = new Bundle();
-            args.putString("ITEM_TITLE", item.getTitle());
-            args.putString("ITEM_DESCRIPTION", item.getOverview());
-            args.putInt("ITEM_POSTER", item.getPosterPath());
-            args.putFloat("ITEM_PRICE", (float) item.getPrice());
-            Navigation.findNavController(v).navigate(R.id.action_itemListFragment_to_itemDetailsFragment, args);
+            Bundle bundle = new Bundle();
+            bundle.putString("ITEM_TITLE", item.getTitle());
+            bundle.putString("ITEM_DESCRIPTION", item.getOverview());
+            bundle.putInt("ITEM_POSTER", item.getPosterPath());
+            bundle.putFloat("ITEM_PRICE", (float) item.getPrice());
+            Navigation.findNavController(v).navigate(R.id.action_itemListFragment_to_itemDetailsFragment, bundle);
         });
 
         // Initialize counter with current quantity

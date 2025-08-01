@@ -17,6 +17,7 @@ import com.google.gson.Gson;
 
 import java.util.Locale;
 import dagger.hilt.android.AndroidEntryPoint;
+import gr.android.softposecr.R;
 import gr.android.softposecr.databinding.FragmentCartBinding;
 import gr.android.softposecr.domain.models.Item;
 import gr.android.softposecr.transactions.SaleActivity;
@@ -75,22 +76,16 @@ public class CartFragment extends Fragment implements CartAdapter.CartItemAction
         binding.backArrowButton.setOnClickListener(v -> {
             Navigation.findNavController(v).navigateUp();
         });
-        binding.checkoutButton.setOnClickListener(v -> performSale());
+        binding.checkoutButton.setOnClickListener(v -> {Bundle bundle = new Bundle();
+            //TODO
+            bundle.putString("AMOUNT", String.format(Locale.getDefault(), "%.2f", viewModel.getCartTotal().getValue()));
+            Navigation.findNavController(this.getView()).navigate(R.id.action_cartFragment_to_EReceiptFragment, bundle);
+        });
     }
 
 
-    private void performSale(){
 
-        String amount = String.format(Locale.US, "%.2f", viewModel.getCartTotal().getValue());
-        String tip = "0.00";
-        String installments = "1";
-        String currency = "EUR";
-        String email = "customer@example.com";
-        String phoneNumber = "306900000000";
-        String uid = "POS001";
-        Intent intent = new Intent(requireContext(), SaleActivity.class);
-        startActivity(intent);
-    }
+
     @Override
     public void onPlusClick(String itemTitle) {
         viewModel.incrementItemQuantity(itemTitle);

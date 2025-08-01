@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/default_backround">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/icon_text"
+        android:gravity="center"
+        android:text="Other Transactions"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/backArrowButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/baseline_arrow_back_24"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:contentDescription="@string/back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/billPaymentButton"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/poppy_button"
+        android:backgroundTint="@color/icon_text"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:focusable="true"
+        android:fontFamily="sans-serif-medium"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+
+        android:paddingHorizontal="25dp"
+        android:paddingVertical="10dp"
+        android:text="Bill Payment"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:id="@+id/refundButton"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/poppy_button"
+        android:backgroundTint="@color/icon_text"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:focusable="true"
+        android:fontFamily="sans-serif-medium"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+
+        android:paddingHorizontal="25dp"
+        android:paddingVertical="10dp"
+        android:text="Refund"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/billPaymentButton" />
+
+    <TextView
+        android:id="@+id/voidButton"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/poppy_button"
+        android:backgroundTint="@color/icon_text"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:focusable="true"
+        android:fontFamily="sans-serif-medium"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+
+
+        android:paddingHorizontal="25dp"
+        android:paddingVertical="10dp"
+        android:text="Void"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/refundButton" />
+
+    <TextView
+        android:id="@+id/closeBatchButton"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/poppy_button"
+        android:backgroundTint="@color/icon_text"
+        android:clickable="true"
+        android:elevation="4dp"
+        android:focusable="true"
+        android:fontFamily="sans-serif-medium"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:paddingHorizontal="25dp"
+        android:paddingVertical="10dp"
+        android:text="Close Batch"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/voidButton" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

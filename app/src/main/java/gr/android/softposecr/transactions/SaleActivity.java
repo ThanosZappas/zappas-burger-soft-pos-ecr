@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.Currency;
 import java.util.Locale;
 
 
@@ -61,26 +63,61 @@ public class SaleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String transactionType = extras.getString("TRANSACTION_TYPE", "SALE");
+            switch (transactionType) {
+                case "SALE":
+                    transactionSale(extras);
+                    break;
+                case "REFUND":
+                    transactionRefund(extras);
+                    break;
+                case "BILL_PAYMENT":
+                    transactionSale(extras);
+                    //transactionBillPayment(extras);
+                    break;
+            }
+        }
+    }
 
-        String amount = String.format(Locale.US, "%.2f", 100.00);
-        String tip = "0.00";
-        String installments = "1";
-        String currency = "EUR";
-        String email = "customer@example.com";
-        String phoneNumber = "306900000000";
-        String uid = "POS001";
+    private void transactionSale(Bundle extras) {
+        String amount = extras.getString("AMOUNT", "1");
+        String tip = extras.getString("TIP", "0");
+        String installments = extras.getString("INSTALLMENTS", "0");
+        String currency = extras.getString("CURRENCY", "EUR");
+        String email = extras.getString("EMAIL");
+        String phoneNumber = extras.getString("PHONE_NUMBER");
+        String uid = extras.getString("UID", "0");
         performSaleAadeV1(amount, tip, installments, currency, email, phoneNumber, uid);
     }
 
-    public void performSaleAadeV1(String amount, String tip, String installments, String currency, String email, String phoneNumber, String uid) {
-//        updateUID();
-//        String msg = String.format("Performing sale: amount=%s tip=%s installments=%s currency=%s uid=%s", amount, tip, installments, currency, uid);
-//        appendText(msg);
-//        Log.d(TAG, msg);
-//        createTestProviderDataV1();
+    private void transactionRefund(Bundle extras) {
+        String amount = extras.getString("AMOUNT", "1");
+        String rnn = extras.getString("RRN", "10");
+        String batchNumber = extras.getString("BATCH_NUMBER", "1");
+        String originalAuthCode = extras.getString("ORIGINAL_AUTH_CODE", "1");
+        String currency = extras.getString("CURRENCY", "EUR");
+        String email = extras.getString("EMAIL");
+        String phoneNumber = extras.getString("PHONE_NUMBER");
+        String uid = extras.getString("UID", "0");
+        performRefund(amount, currency, rnn,batchNumber,originalAuthCode, email, phoneNumber, uid);
+    }
+    private void transactionBillPayment(Bundle extras) {
+        String amount = extras.getString("AMOUNT", "0");
+        String tip = extras.getString("TIP", "0");
+        String installments = extras.getString("INSTALLMENTS", "0");
+        String currency = extras.getString("CURRENCY", "EUR");
+        String email = extras.getString("EMAIL");
+        String phoneNumber = extras.getString("PHONE_NUMBER");
+        String uid = extras.getString("UID", "0");
+        performBillPayment(amount, tip, installments, currency, email, phoneNumber, uid);
+    }
 
-        String uri = String.format("request/v1?amount=%s&currency=EUR&tip=%s&installments=%s&email=%s&phoneNumber=%s&uid=%s&transactionName=sale&providerData=%s&appId=%s",
-                amount, tip, installments, email, phoneNumber, uid,
+
+    private void performSaleAadeV1(String amount, String tip, String installments, String currency, String email, String phoneNumber, String uid) {
+        String uri = String.format("request/v1?amount=%s&currency=%s&tip=%s&installments=%s&email=%s&phoneNumber=%s&uid=%s&transactionName=sale&providerData=%s&appId=%s",
+                amount, currency, tip, installments, email, phoneNumber, uid,
                 "", APPLICATION_ID );
         try {
 //            Log.d(TAG, "Before encode: " + uriPrefix + uri);
@@ -95,6 +132,16 @@ public class SaleActivity extends AppCompatActivity {
     }
 
 
+    private void performRefund(String amount, String currency, String rrn, String batchNumber,
+                               String originalAuthCode, String email, String phoneNumber, String uid) {
+        String uri = String.format(uriPrefix + "request/v1?amount=%s&transactionName=refund&currency=%s&rrn=%s&batchNumber=%s&authCode=%s&email=%s&phoneNumber=%s&uid=%s&appId=%s", amount,currency, rrn, batchNumber, originalAuthCode, email, phoneNumber, uid, APPLICATION_ID);
+        SendRequest(uri);
+    }
+
+    private void performBillPayment(String amount, String tip, String installments, String currency, String email, String phoneNumber, String uid) {
+        String uri = String.format(uriPrefix + "request/v1?amount=%s&currency=%s&tip=%s&installments=%s&email=%s&phoneNumber=%s&uid=%s&appId=%s&transactionName=BILL_PAYMENT&specialPaymentCode=123456123456", amount, currency, tip, installments, email, phoneNumber, uid, APPLICATION_ID);
+        SendRequest(uri);
+    }
 
 
     private void SendRequest(String uri) {
@@ -120,6 +167,7 @@ public class SaleActivity extends AppCompatActivity {
 //                Log.d(TAG, "What method are you using? " + intentMethod);
         }
     }
+
 
 
 }

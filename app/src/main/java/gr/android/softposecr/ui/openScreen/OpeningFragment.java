@@ -34,6 +34,10 @@ public class OpeningFragment extends Fragment {
             Navigation.findNavController(binding.getRoot()).navigate(R.id.action_openingFragment_to_itemListFragment);
         });
 
+        binding.otherButton.setOnClickListener(v -> {
+            Navigation.findNavController(binding.getRoot()).navigate(R.id.action_openingFragment_to_otherFragment);
+        } );
+
         // Set up the menu button click listener
         binding.menuButton.setOnClickListener(v -> drawerLayout.openDrawer(GravityCompat.START));
 
