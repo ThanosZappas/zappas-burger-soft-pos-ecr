@@ -1,4 +1,4 @@
-package gr.android.softposecr.ui.homeScreen;
+package gr.android.softposecr.ui.orderScreen;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ import java.util.Locale;
 
 import gr.android.softposecr.R;
 import gr.android.softposecr.databinding.ItemBinding;
-import gr.android.softposecr.domain.models.Item;
+import gr.android.softposecr.models.Item;
 
 public class ItemListAdapter extends ListAdapter<Item, ItemListAdapter.ItemViewHolder> {
 

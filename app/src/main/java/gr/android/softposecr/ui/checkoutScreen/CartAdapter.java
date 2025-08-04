@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.Locale;
 import gr.android.softposecr.databinding.CartItemBinding;
-import gr.android.softposecr.domain.models.Item;
+import gr.android.softposecr.models.Item;
 
 public class CartAdapter extends ListAdapter<Item, CartAdapter.CartViewHolder> {
 

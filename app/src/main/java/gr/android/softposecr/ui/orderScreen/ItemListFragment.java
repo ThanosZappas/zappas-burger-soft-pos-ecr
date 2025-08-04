@@ -1,4 +1,4 @@
-package gr.android.softposecr.ui.homeScreen;
+package gr.android.softposecr.ui.orderScreen;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,7 +17,6 @@ import java.util.Locale;
 import dagger.hilt.android.AndroidEntryPoint;
 import gr.android.softposecr.R;
 import gr.android.softposecr.databinding.FragmentItemListBinding;
-import gr.android.softposecr.domain.models.Item;
 
 // implements ItemListAdapter.OnItemClickListener {
 @AndroidEntryPoint
@@ -71,7 +70,7 @@ public class ItemListFragment extends Fragment implements ItemListAdapter.OnItem
     private void updateUI() {
         // Update cart total when quantities change
         viewModel.getCartTotal().observe(getViewLifecycleOwner(), total -> {
-            binding.cartTotalText.setText(String.format(Locale.getDefault(), "\uD83D\uDED2 Cart: %.2f€", total));
+            binding.cartTotalText.setText(String.format(Locale.getDefault(), "Cart: %.2f€", total));
             if( total == 0.0f) {
                 binding.cartTotalText.setVisibility(View.GONE);
             } else {

@@ -47,9 +47,14 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="2dp"
+        android:inputType="number"
         android:background="@drawable/edit_text_backround"
-        android:hint=" Enter the bill number.."
+        android:textColorHint="@color/icon_text"
+        android:textColor="@color/icon_text"
+        android:gravity="top|start"
+        android:textSize="18sp"
         android:textStyle="italic"
+        android:hint=" Enter the bill number.."
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/billNumberLabel" />
@@ -74,6 +79,10 @@
         android:layout_marginTop="2dp"
         android:background="@drawable/edit_text_backround"
         android:hint=" Enter the bill amount.."
+        android:textColorHint="@color/icon_text"
+        android:textColor="@color/icon_text"
+        android:gravity="top|start"
+        android:textSize="18sp"
         android:textStyle="italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -95,8 +104,7 @@
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/billAmountEditText"
         app:layout_constraintTop_toBottomOf="@id/billAmountEditText" />
 
 

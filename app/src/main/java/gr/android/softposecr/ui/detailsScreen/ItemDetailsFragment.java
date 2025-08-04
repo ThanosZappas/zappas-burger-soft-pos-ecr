@@ -16,7 +16,7 @@ import androidx.navigation.Navigation;
 import java.util.Locale;
 
 import gr.android.softposecr.databinding.FragmentItemDetailsBinding;
-import gr.android.softposecr.ui.homeScreen.ItemViewModel;
+import gr.android.softposecr.ui.orderScreen.ItemViewModel;
 
 public class ItemDetailsFragment extends Fragment {
     private ItemViewModel viewModel;
@@ -67,12 +67,8 @@ public class ItemDetailsFragment extends Fragment {
 
         // Setup submit button
         binding.submitNotes.setOnClickListener(v -> {
-            String notes = binding.itemNotes.getText().toString();
-            if (!notes.equals("Notes..") && !notes.isEmpty()) {
-                // Here you can handle the notes submission
-                // For example, save to ViewModel or database
-                binding.itemNotes.clearFocus();
-            }
+            binding.itemNotes.clearFocus();
+            Navigation.findNavController(binding.getRoot()).navigateUp();
         });
 
         // Setup notes EditText

@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/itemListFragment"
-        android:name="gr.android.softposecr.ui.homeScreen.ItemListFragment"
+        android:name="gr.android.softposecr.ui.orderScreen.ItemListFragment"
         android:label="ItemListFragment"
         tools:layout="@layout/fragment_item_list">
         <action
@@ -80,15 +80,23 @@
         <action
             android:id="@+id/action_otherFragment_to_refundFragment"
             app:destination="@id/refundFragment" />
+        <action
+            android:id="@+id/action_otherFragment_to_voidFragment"
+            app:destination="@id/voidFragment" />
     </fragment>
     <fragment
         android:id="@+id/billPaymentFragment"
-        android:name="gr.android.softposecr.ui.checkoutScreen.BillPaymentFragment"
+        android:name="gr.android.softposecr.ui.otherTransactionsScreen.BillPaymentFragment"
         android:label="BillPaymentFragment"
         tools:layout="@layout/fragment_bill_payment"/>
     <fragment
         android:id="@+id/refundFragment"
-        android:name="gr.android.softposecr.ui.checkoutScreen.RefundFragment"
+        android:name="gr.android.softposecr.ui.otherTransactionsScreen.RefundFragment"
         android:label="RefundFragment"
         tools:layout="@layout/fragment_refund"/>
+    <fragment
+        android:id="@+id/voidFragment"
+        android:name="gr.android.softposecr.ui.otherTransactionsScreen.VoidFragment"
+        android:label="VoidFragment"
+        tools:layout="@layout/fragment_void"/>
 </navigation>

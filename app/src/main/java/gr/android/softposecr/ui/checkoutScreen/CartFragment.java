@@ -1,8 +1,6 @@
 package gr.android.softposecr.ui.checkoutScreen;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +11,12 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.google.gson.Gson;
-
 import java.util.Locale;
 import dagger.hilt.android.AndroidEntryPoint;
 import gr.android.softposecr.R;
 import gr.android.softposecr.databinding.FragmentCartBinding;
-import gr.android.softposecr.domain.models.Item;
-import gr.android.softposecr.transactions.SaleActivity;
-import gr.android.softposecr.ui.homeScreen.ItemViewModel;
+import gr.android.softposecr.models.Item;
+import gr.android.softposecr.ui.orderScreen.ItemViewModel;
 
 @AndroidEntryPoint
 public class CartFragment extends Fragment implements CartAdapter.CartItemActionListener {

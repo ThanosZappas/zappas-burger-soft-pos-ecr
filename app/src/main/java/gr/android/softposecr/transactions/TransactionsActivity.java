@@ -1,29 +1,21 @@
 package gr.android.softposecr.transactions;
 
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.AttributeSet;
-import android.util.Log;
-import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.Currency;
-import java.util.Locale;
 
 
-public class SaleActivity extends AppCompatActivity {
+public class TransactionsActivity extends AppCompatActivity {
     public static final String APPLICATION_ID = "com.mellon.ecr";
     public static final String uriPrefix = "nbgpaytxn://"; // or "cosmotepaytxn://"
     public static final String intentMethod = "DEEPLINK"; // or "INTENT"
-
     public static final String CALLBACK_NAME = "showcasecallback";
 
 //    public static void createTestProviderDataV2() {
@@ -75,7 +67,14 @@ public class SaleActivity extends AppCompatActivity {
                     break;
                 case "BILL_PAYMENT":
                     transactionSale(extras);
-                    //transactionBillPayment(extras);
+//                    transactionBillPayment(extras);
+                    break;
+                case "CLOSE_BATCH":
+                    transactionCloseBatch(extras);
+                    break;
+                case "VOID":
+//                    transactionVoid(extras);
+                    transactionRefund(extras);
                     break;
             }
         }
@@ -101,8 +100,25 @@ public class SaleActivity extends AppCompatActivity {
         String email = extras.getString("EMAIL");
         String phoneNumber = extras.getString("PHONE_NUMBER");
         String uid = extras.getString("UID", "0");
-        performRefund(amount, currency, rnn,batchNumber,originalAuthCode, email, phoneNumber, uid);
+        performRefund(amount, currency, rnn, batchNumber, originalAuthCode, email, phoneNumber, uid);
     }
+
+    private void transactionVoid(Bundle extras) {
+        String amount = extras.getString("AMOUNT", "1");
+        String email = extras.getString("EMAIL");
+        String phoneNumber = extras.getString("PHONE_NUMBER");
+        String uid = extras.getString("UID", "0");
+        String originalUid = extras.getString("ORIGINAL_UID", "0");
+        performVoid(amount, originalUid, email, phoneNumber, uid);
+    }
+
+    private void performVoid(String amount, String originalUid, String email, String phoneNumber, String uid) {
+        String uri = String.format("request/v1?amount=%s&originalUid=%s&transactionName=void&email=%s&phoneNumber=%s&uid=%s&appId=%s",
+                amount, originalUid, email, phoneNumber, uid, APPLICATION_ID);
+
+        SendRequest(uri);
+    }
+
     private void transactionBillPayment(Bundle extras) {
         String amount = extras.getString("AMOUNT", "0");
         String tip = extras.getString("TIP", "0");
@@ -114,11 +130,20 @@ public class SaleActivity extends AppCompatActivity {
         performBillPayment(amount, tip, installments, currency, email, phoneNumber, uid);
     }
 
+    private void transactionCloseBatch(Bundle extras) {
+        String uid = extras.getString("UID", "0");
+        performCloseBatch(uid);
+    }
 
     private void performSaleAadeV1(String amount, String tip, String installments, String currency, String email, String phoneNumber, String uid) {
+        String json = ""; //empty
         String uri = String.format("request/v1?amount=%s&currency=%s&tip=%s&installments=%s&email=%s&phoneNumber=%s&uid=%s&transactionName=sale&providerData=%s&appId=%s",
                 amount, currency, tip, installments, email, phoneNumber, uid,
-                "", APPLICATION_ID );
+                "", APPLICATION_ID);
+        uri = String.format("request/v1?amount=%s&currency=%s&tip=%s&installments=%s&email=%s&phoneNumber=%s&uid=%s&transactionName=sale&providerData=%s&appId=%s",
+                amount,currency, tip, installments, email, phoneNumber, uid,
+                json, APPLICATION_ID);
+
         try {
 //            Log.d(TAG, "Before encode: " + uriPrefix + uri);
             uri = URLEncoder.encode(uri, "UTF-8");
@@ -134,12 +159,23 @@ public class SaleActivity extends AppCompatActivity {
 
     private void performRefund(String amount, String currency, String rrn, String batchNumber,
                                String originalAuthCode, String email, String phoneNumber, String uid) {
-        String uri = String.format(uriPrefix + "request/v1?amount=%s&transactionName=refund&currency=%s&rrn=%s&batchNumber=%s&authCode=%s&email=%s&phoneNumber=%s&uid=%s&appId=%s", amount,currency, rrn, batchNumber, originalAuthCode, email, phoneNumber, uid, APPLICATION_ID);
+        String uri = String.format(uriPrefix + "request/v1?amount=%s&transactionName=refund&currency=%s&rrn=%s&batchNumber=%s&authCode=%s&email=%s&phoneNumber=%s&uid=%s&appId=%s", amount, currency, rrn, batchNumber, originalAuthCode, email, phoneNumber, uid, APPLICATION_ID);
         SendRequest(uri);
     }
 
     private void performBillPayment(String amount, String tip, String installments, String currency, String email, String phoneNumber, String uid) {
         String uri = String.format(uriPrefix + "request/v1?amount=%s&currency=%s&tip=%s&installments=%s&email=%s&phoneNumber=%s&uid=%s&appId=%s&transactionName=BILL_PAYMENT&specialPaymentCode=123456123456", amount, currency, tip, installments, email, phoneNumber, uid, APPLICATION_ID);
+        SendRequest(uri);
+    }
+
+    private void performCloseBatch(String uid) {
+        String uri = String.format("request/v1?transactionName=batchClose&uid=%s&appId=%s", uid, APPLICATION_ID);
+        try {
+            uri = URLEncoder.encode(uri, "UTF-8");
+            uri = uriPrefix + uri;
+        } catch (UnsupportedEncodingException e) {
+//            Log.d(TAG, e.getMessage());
+        }
         SendRequest(uri);
     }
 
@@ -167,7 +203,6 @@ public class SaleActivity extends AppCompatActivity {
 //                Log.d(TAG, "What method are you using? " + intentMethod);
         }
     }
-
 
 
 }

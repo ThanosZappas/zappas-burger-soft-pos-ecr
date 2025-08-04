@@ -1,6 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">SoftPosEcr</string>
+    <string name="transaction_number_format">Transaction #: %s</string>
+    <string name="amount_format">Amount: €%s</string>
+    <string name="date_format">Date: %s</string>
     <string name="app_title">Zappas Burger</string>
+    <string name="app_name">SoftPosEcr</string>
     <string name="popular_items">Popular Items</string>
     <string name="favorite_items">Favorite Items</string>
     <string name="back_button">Back Button</string>
@@ -22,3 +26,4 @@
     <string name="item_price">Item Price</string>
     <string name="outcome_view">Outcome View</string>
 </resources>
+

@@ -12,12 +12,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import java.util.Locale;
-
 import gr.android.softposecr.R;
 import gr.android.softposecr.databinding.FragmentEreceiptBinding;
-import gr.android.softposecr.transactions.SaleActivity;
-import gr.android.softposecr.ui.homeScreen.ItemViewModel;
+import gr.android.softposecr.transactions.TransactionsActivity;
 
 public class EReceiptFragment extends Fragment {
     private FragmentEreceiptBinding binding;
@@ -117,7 +114,7 @@ public class EReceiptFragment extends Fragment {
     }
 
     private void performSale(Bundle bundle) {
-        Intent intent = new Intent(requireContext(), SaleActivity.class);
+        Intent intent = new Intent(requireContext(), TransactionsActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }

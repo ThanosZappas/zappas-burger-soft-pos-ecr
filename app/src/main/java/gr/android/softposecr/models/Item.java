@@ -1,4 +1,4 @@
-package gr.android.softposecr.domain.models;
+package gr.android.softposecr.models;
 
 public class Item {
     private String title;

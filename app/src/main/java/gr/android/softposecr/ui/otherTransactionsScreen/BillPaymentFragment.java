@@ -1,4 +1,4 @@
-package gr.android.softposecr.ui.checkoutScreen;
+package gr.android.softposecr.ui.otherTransactionsScreen;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +11,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import java.util.Locale;
+
 import gr.android.softposecr.databinding.FragmentBillPaymentBinding;
-import gr.android.softposecr.transactions.SaleActivity;
+import gr.android.softposecr.transactions.TransactionsActivity;
 
 public class BillPaymentFragment extends Fragment {
     private FragmentBillPaymentBinding binding;
@@ -34,11 +36,11 @@ public class BillPaymentFragment extends Fragment {
     }
 
     private void startBillPayment() {
-        String amount = binding.billAmountEditText.getText().toString();
+        String amount = String.format(Locale.getDefault(), "%.2f",binding.billAmountEditText.getText().toString());
         Bundle bundle = new Bundle();
         bundle.putString("TRANSACTION_TYPE", "BILL_PAYMENT");
         bundle.putString("AMOUNT", amount);
-        Intent intent = new Intent(requireActivity(), SaleActivity.class);
+        Intent intent = new Intent(requireActivity(), TransactionsActivity.class);
         intent.putExtras(bundle);
         startActivity(intent);
     }

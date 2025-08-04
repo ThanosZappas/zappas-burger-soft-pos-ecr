@@ -1,4 +1,4 @@
-package gr.android.softposecr.ui.homeScreen;
+package gr.android.softposecr.ui.orderScreen;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import javax.inject.Inject;
 import gr.android.softposecr.R;
-import gr.android.softposecr.domain.models.Item;
+import gr.android.softposecr.models.Item;
 
 @HiltViewModel
 public class ItemViewModel extends ViewModel {
