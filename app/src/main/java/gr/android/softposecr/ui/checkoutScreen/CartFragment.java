@@ -64,6 +64,8 @@ public class CartFragment extends Fragment implements CartAdapter.CartItemAction
         // Observe total amount
         viewModel.getCartTotal().observe(getViewLifecycleOwner(), total -> {
             binding.totalAmount.setText(String.format(Locale.getDefault(), "%.2f€", total));
+            binding.checkoutButton.setEnabled(total > 0);
+            binding.checkoutButton.setAlpha(total > 0 ? 1.0f : 0.5f);
         });
     }
 
@@ -72,7 +74,6 @@ public class CartFragment extends Fragment implements CartAdapter.CartItemAction
             Navigation.findNavController(v).navigateUp();
         });
         binding.checkoutButton.setOnClickListener(v -> {Bundle bundle = new Bundle();
-            //TODO
             bundle.putString("AMOUNT", String.format(Locale.getDefault(), "%.2f", viewModel.getCartTotal().getValue()));
             Navigation.findNavController(this.getView()).navigate(R.id.action_cartFragment_to_EReceiptFragment, bundle);
         });
